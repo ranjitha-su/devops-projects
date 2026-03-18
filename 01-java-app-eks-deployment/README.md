@@ -16,26 +16,6 @@ This is a **foundational DevOps project** focused on understanding Kubernetes de
 
 ---
 
-## ✅ Project Structure
-
-```
-.
-├── Dockerfile
-├── eksctl/
-│   └── eks-config.yaml
-├── kubernetes/
-│   ├── deployment.yaml
-│   └── service.yaml
-├── pom.xml
-├── src/
-│   └── main/
-│       ├── java/com/example/Application.java
-│       └── resources/static/index.html
-└── README.md
-```
-
----
-
 ## ✅ Prerequisites
 
 Ensure the following tools are installed and configured:
@@ -49,11 +29,11 @@ Ensure the following tools are installed and configured:
 - **AWS CLI** – CLI tool to interact with AWS services (required for EKS)  
   https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
-After installing AWS CLI, configure it:
-
-```bash
-aws configure
-```
+  After installing AWS CLI, configure it:
+  
+  ```bash
+  aws configure
+  ```
 
 Verify installations:
 

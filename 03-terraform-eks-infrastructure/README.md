@@ -4,8 +4,16 @@ This repository provisions an **AWS EKS cluster** using Terraform and configures
 
 It is designed to avoid common PVC binding and permission issues that occur in Kubernetes v1.22+ (with CSI migration enabled by default) when using legacy EBS provisioners.
 
-> [!NOTE]
+<details>
+<summary>EKS Pod Identiy Agent (modern preferred alternative to IRSA)</summary>
 > A new EKS cluster addon eks-pod-identity-agent now replaces IRSA, but it is outside the purview of this project.
+> eks-pod-identity-agent plugin 
+> Pods in EKS often need to call AWS APIs, but we don't have to configure longlived AWS credentials for them as it's insecure.
+> AWS installs pod-identity-agent on nodes
+> Pods asks pod-identity-agent for AWS credentials.
+> This is an AWS simplified way for pods to access AWS APIs. 
+
+</details>
 ---
 
 ## What This Repository Creates
@@ -181,5 +189,28 @@ This repository provisions and configures:
 - EKS cluster and managed node groups
 - AWS EBS CSI Driver EKS add-on
 - IAM Role for Service Accounts (IRSA) for ebs-csi-controller pod
+
+---
+
+
+## Provisioning Infrastructure
+
+Initialize Terraform:
+
+```
+terraform init
+```
+
+Review the plan:
+
+```
+terraform plan -var-file="terraform.tfvars"
+```
+
+Apply the infrastructure:
+
+```
+terraform apply -var-file="terraform.tfvars"
+```
 
 ---
