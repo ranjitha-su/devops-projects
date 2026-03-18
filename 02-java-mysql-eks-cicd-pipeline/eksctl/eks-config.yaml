@@ -1,0 +1,33 @@
+# An example of ClusterConfig with a normal nodegroup and a Fargate profile.
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: dev-eks-cluster
+  region: us-west-2
+
+managedNodeGroups:
+  - name: dev-eks-managed-ng-1
+    instanceType: t3.small
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 3
+
+fargateProfiles:
+  - name: dev-eks-fp
+    selectors:
+      - namespace: dev-eks
+        labels:
+          env: dev
+iam:
+  withOIDC: true
+  serviceAccounts:
+    - metadata:
+        name: ebs-csi-controller-sa
+        namespace: kube-system
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+      roleName: dev-eks-ebs-csi-irsa
+addons:
+  - name: aws-ebs-csi-driver
