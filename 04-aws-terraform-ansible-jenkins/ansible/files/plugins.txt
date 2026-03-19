@@ -1,0 +1,17 @@
+# Comments start with a '#'
+# Format: plugin-name:version
+# Using 'latest' or omitting the version installs the newest compatible version.
+
+pipeline-stage-view:2.38
+multibranch-scan-webhook-trigger:1.0.11
+pipeline-utility-steps:2.20.0
+ignore-committer-strategy:55.v51410e712e0c
+nodejs:1.6.6
+ssh-agent:386.v36cc0c7582f0
+pipeline-input-step:540.v14b_100d754dd
+git:5.8.1
+ssh-steps:2.0.92.vb_a_0583935f9b_
+pipeline-aws:1.45
+workflow-cps-global-lib-http:2.54.0
+maven-plugin:3.27
+pipeline-maven:1611.v6a_00c04177b_b_ 

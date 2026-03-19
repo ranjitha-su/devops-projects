@@ -28,7 +28,7 @@
   hosts: role_jenkins
   become: yes
   vars:
-    plugins_file_path_src: "/Users/ranjithas/repos/ranjitha-projects/configuration-management/ansible-jenkins/plugins.txt"
+    plugins_file_path_src: "plugins.txt"
     plugins_file_path_dest: "/tmp/plugins.txt"
   tasks:
     - name: Check if plugins.txt exists on remote server
