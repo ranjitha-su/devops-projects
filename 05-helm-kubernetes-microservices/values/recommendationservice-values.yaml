@@ -1,0 +1,14 @@
+app:
+  name: recommendationservice
+  namespace: app
+  image: gcr.io/google-samples/microservices-demo/recommendationservice
+  version: v0.8.0
+  replicaCount: 1
+  containerPort: 50051
+  envVars:
+  - name: PORT
+    value: "50051"
+  - name: PRODUCT_CATALOG_SERVICE_ADDR
+    value: "productcatalogservice:5007"
+
+servicePort: 5009

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  replicas: {{ .Values.app.replicaCount }} # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+    spec:
+      containers:
+        - name: {{ .Values.app.name }}
+          image: "{{ .Values.app.name }}:{{ .Values.app.version }}"
+          ports:
+            - containerPort: {{ .Values.app.containerPort }}
+          env:
+            - name: PORT
+              value: {{ .Values.app.containerPort | quote }}
+          livenessProbe:
+            initialDelaySeconds: {{ .Values.app.initialDelaySeconds }}
+            tcpSocket:
+              port: {{ .Values.app.containerPort }}
+            periodSeconds: {{ .Values.app.periodSeconds }}
+          readinessProbe:
+            initialDelaySeconds: {{ .Values.app.initialDelaySeconds }}
+            tcpSocket:
+              port: {{ .Values.app.containerPort }}
+            periodSeconds: {{ .Values.app.periodSeconds }}
+          volumeMounts:
+            - name: {{ .Values.app.containerVolumeMountName }}
+              mountPath: {{ .Values.app.containerVolumeMountPath }}
+      volumes:
+        - name: {{ .Values.app.containerVolumeMountName }}
+          emptyDir: {}

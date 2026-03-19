@@ -1,0 +1,14 @@
+app:
+  name: currencyservice
+  namespace: app
+  image: gcr.io/google-samples/microservices-demo/currencyservice
+  version: v0.8.0
+  replicaCount: 1
+  containerPort: 7000
+  envVars:
+  - name: PORT
+    value: "7000"
+  - name: DISABLE_PROFILER
+    value: "1"
+
+servicePort: 5003

@@ -1,0 +1,16 @@
+app:
+  name: myapp
+  namespace: default-namespace
+  image: gcr.io/google-samples/microservices-demo/servicename
+  version: v0.0.0
+  containerPort: 8080
+  envVars:
+    - name: ENVVAR_ONE
+      value: "1000"
+
+servicePort: 1000
+type: ClusterIP
+
+ingress:
+  enabled: false
+

@@ -1,0 +1,15 @@
+app:
+  name: redis
+  namespace: app
+  image: redis
+  version: alpine
+  containerPort: 6379
+  replicaCount: 1
+  containerVolumeMountName: redis-data
+  containerVolumeMountPath: /data
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+service:
+  type: ClusterIP
+  port: 6379
