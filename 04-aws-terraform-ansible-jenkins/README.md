@@ -16,6 +16,11 @@ The workflow is:
     - Connects to the EC2 instance
     - Runs Jenkins as a container
     - Installs required tools inside the Jenkins container
+      - docker
+      - awscli
+      - kubectl
+      - docker cli inside jenkins container (socket sharing)
+    - Installs the necessary Jenkins plugins
 
 ---
 
@@ -23,7 +28,7 @@ The workflow is:
 
 - **Terraform** >= 1.0.0
 - **AWS CLI** installed and configured (`~/.aws/credentials`)
-- An **AWS account** with sufficient IAM permissions to create:
+- An **AWS account** with sufficient IAM permissions
 
 ---
 
